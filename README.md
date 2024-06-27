@@ -5,4 +5,4 @@ This package provides a simple way to manage WebSocket-based conversations in No
 ## Installation
 
 ```bash
-npm install websocket-convo-manager
+npm i @davelrb/test-package
