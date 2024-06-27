@@ -5,4 +5,4 @@ This package provides a simple way to manage WebSocket-based conversations in No
 ## Installation
 
 ```bash
-npm install your-package-name
+npm install websocket-convo-manager

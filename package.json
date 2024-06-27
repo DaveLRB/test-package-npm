@@ -12,7 +12,10 @@
     "url": "(https://github.com/DaveLRB/test-package.git)"
   },
   "keywords": [
-    "test"
+    "conversation",
+    "chat",
+    "websocket",
+    "server"
   ],
   "author": "davelrb",
   "license": "MIT",
