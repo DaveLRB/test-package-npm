@@ -1,11 +1,14 @@
-// test-package/package/src/index.js
+// test-package/package/src/index.ts
 
-import WebSocket from 'ws';
-import { createWebSocket, setupWebSocketListeners } from './websocket.js';
-import { handleChatOperation } from './chat.js';
-import { handleWebSocketMessage } from './messageHandlers.js';
+import WebSocket, { MessageEvent, ErrorEvent } from 'ws';
+import { RunConversationOptionsSchema, RunConversationOptions } from './validation/indexValidation';
+import { createWebSocket, setupWebSocketListeners } from './websocket';
+import { handleChatOperation } from './chat';
+import { handleWebSocketMessage } from './messageHandlers';
 
-function runConversation(options) {
+function runConversation(options: RunConversationOptions) {
+  RunConversationOptionsSchema.parse(options);
+
   const {
     id,
     question_id,
@@ -36,7 +39,7 @@ function runConversation(options) {
         websocket.close();
       }
     },
-    onMessage: (event) => {
+    onMessage: (event: MessageEvent) => {
       console.log("Received WebSocket message:", event.data);
       handleWebSocketMessage(event, {
         fromRunDtoToStateDto,
@@ -45,7 +48,7 @@ function runConversation(options) {
         value
       });
     },
-    onError: (error) => {
+    onError: (error: ErrorEvent) => {
       console.error("WebSocket error:", error);
     },
     onClose: () => {
@@ -55,7 +58,7 @@ function runConversation(options) {
 
   return {
     close: () => websocket.close(),
-    send: (message) => {
+    send: (message: Record<string, any>) => {
       if (websocket.readyState === WebSocket.OPEN) {
         websocket.send(JSON.stringify(message));
       } else {

@@ -1,10 +1,17 @@
-export function handleWebSocketMessage(event, options) {
+// test-package/package/src/messageHandlers.ts
+
+import { HandleWebSocketMessageOptionsSchema, HandleWebSocketMessageOptions } from './validation/messageHandlersValidation';
+import { MessageEvent } from 'ws';
+
+export function handleWebSocketMessage(event: MessageEvent, options: HandleWebSocketMessageOptions): void {
+  HandleWebSocketMessageOptionsSchema.parse(options);
+
   const { fromRunDtoToStateDto, updateAnswerCallback, updateMessagesCallback, value } = options;
 
   try {
-    let data;
+    let data: Record<string, any>;
     try {
-      data = JSON.parse(event.data);
+      data = JSON.parse(event.data as string);
     } catch (error) {
       console.log("Received non-JSON message:", event.data);
       data = { message: event.data };
@@ -18,7 +25,7 @@ export function handleWebSocketMessage(event, options) {
         conversationName: message.conversationName,
         createdDate: message.createdDate,
         updatedDate: message.updatedDate,
-        output: message.output || message.message, // Fall back to message if output is not available
+        output: message.output || message.message,
       });
     }
 
