@@ -1,7 +1,7 @@
 {
   "name": "@davelrb/test-package",
   "version": "2.1.0",
-  "description": "just a test package ",
+  "description": "A package for managing chat conversations through WebSockets with type safety and validation",
   "main": "package/src/index.js",
   "type": "module",
   "scripts": {
@@ -11,13 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "(https://github.com/DaveLRB/test-package.git)"
+    "url": "https://github.com/DaveLRB/test-package.git"
   },
   "keywords": [
     "conversation",
     "chat",
     "websocket",
-    "server"
+    "server",
+    "typescript",
+    "validation",
+    "zod"
   ],
   "author": "davelrb",
   "license": "MIT",
