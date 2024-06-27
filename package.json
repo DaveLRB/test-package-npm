@@ -2,7 +2,7 @@
   "name": "@davelrb/test-package",
   "version": "1.0.1",
   "description": "just a test package ",
-  "main": "index.js",
+  "main": "package/src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
     "test"
   ],
   "author": "davelrb",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.17.1"
+  }
 }
